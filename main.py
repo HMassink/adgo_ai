@@ -35,7 +35,7 @@ if prompt:
         generated_response = run_llm(
             query=prompt, chat_history=st.session_state["chat_history"]
         )
-        print(generated_response)
+        # print(generated_response)
 
         # Ensure generated_response contains 'context' with Document objects
         if "context" in generated_response:
@@ -45,7 +45,7 @@ if prompt:
         else:
             sources = set()
 
-        print(sources)
+        # print(sources)
 
         formatted_response = (
             f"{generated_response['answer']} \n\n {create_sources_string(sources)}"
