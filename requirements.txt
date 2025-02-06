@@ -1,0 +1,7 @@
+langchain
+langchain_openai
+langchain_pinecone
+load_dotenv
+streamlit
+streamlit_chat
+langchain_community
