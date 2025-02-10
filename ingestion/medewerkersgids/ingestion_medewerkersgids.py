@@ -15,7 +15,7 @@ pinecone_key = os.environ.get("PINECONE_API_KEY")
 def ingest_docs() -> None:
     base_path = r"D:\Github\adgo_ai\ingestion\medewerkersgids\files"
     pdf_files = [
-        "medewerkers.pdf",
+        "oer-bouwkunde.pdf",
     ]
 
     raw_documents = []
