@@ -1,11 +1,13 @@
 from typing import Set
+import os
 
 from backend.core import run_llm
 import streamlit as st
 from streamlit_chat import message
-from ingestion.basis_ingestion import index_name
+# Dit is de naam van de index in Pinecone!
+from ingestion.index_names import index_name_medewerkersgids as index_name
 
-st.header("Workshop ADGO AI")
+st.header("Medewerkersgids ADGO")
 
 
 prompt = st.text_input("Prompt", placeholder="Stel hier je vraag..")
@@ -40,18 +42,16 @@ if prompt:
         )
         # print(generated_response)
 
-        # Ensure generated_response contains 'context' with Document objects
-        if "context" in generated_response:
-            sources = set(
-                [doc.metadata["source"] for doc in generated_response["context"]]
-            )
-        else:
-            sources = set()
+        for doc in generated_response["context"]:
+            source = doc.metadata.get("source", "")
+            if source != "":
+                source = os.path.basename(source)
+            page = int(doc.metadata.get("page", 0))
 
         # print(sources)
 
         formatted_response = (
-            f"{generated_response['answer']} \n\n {create_sources_string(sources)}"
+            f"{generated_response['answer']} \n *Gevonden in document {source} op ongeveer pagina {page}*"
         )
 
         st.session_state["user_prompt_history"].append(prompt)
