@@ -1,0 +1,3 @@
+index_name_internationalisering="internationalisering"
+index_name_medewerkersgids="medewerkersgids"
+index_name_adgo_ai="adgo-ai"

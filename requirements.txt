@@ -5,3 +5,4 @@ load_dotenv
 streamlit
 streamlit_chat
 langchain_community
+pypdf
